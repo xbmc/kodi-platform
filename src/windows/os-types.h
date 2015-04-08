@@ -40,6 +40,7 @@
 #endif
 
 #define WIN32_LEAN_AND_MEAN           // Enable LEAN_AND_MEAN support
+#define NOGDI                         // Disable GDI support, means people can have an enum/constant named ERROR
 #ifndef NOMINMAX
 #define NOMINMAX                      // don't define min() and max() to prevent a clash with std::min() and std::max
 #endif
