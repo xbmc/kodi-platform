@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 find_package(kodi REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(Threads REQUIRED)
+find_package(platform REQUIRED)
 include(UseMultiArch.cmake)
 include(CheckAtomic.cmake)
 
@@ -17,12 +18,7 @@ set(kodiplatform_VERSION_MAJOR ${APP_VERSION_MAJOR})
 set(kodiplatform_VERSION_MINOR ${APP_VERSION_MINOR})
 set(kodiplatform_VERSION_PATCH 0)
 
-if(WIN32)
-  set(PLAT_SOURCES src/windows/dlfcn-win32.cpp
-                   src/windows/os-threads.cpp
-                   src/windows/serialport.cpp)
-else()
-  set(PLAT_SOURCES src/posix/serialport.cpp)
+if(NOT WIN32)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 endif()
 
@@ -38,46 +34,17 @@ if(NOT ${CORE_SYSTEM_NAME} STREQUAL "")
   endif()
 endif()
 
-set(SOURCES src/util/XMLUtils.cpp
-            src/util/fstrcmp.c
-            src/util/StringUtils.cpp)
-          include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR})
+set(SOURCES src/util/XMLUtils.cpp)
+
+include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR} ${platform_INCLUDE_DIRS})
 
 add_library(kodiplatform ${SOURCES} ${PLAT_SOURCES})
-target_link_libraries(kodiplatform ${kodiplatform_LIBRARIES})
+target_link_libraries(kodiplatform ${kodiplatform_LIBRARIES} ${platform_LIBRARIES})
 set_target_properties(kodiplatform PROPERTIES VERSION ${kodiplatform_VERSION_MAJOR}.${kodiplatform_VERSION_MINOR}.${kodiplatform_VERSION_PATCH}
                                               SOVERSION ${kodiplatform_VERSION_MAJOR}.0)
 
 install(TARGETS kodiplatform DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES src/os.h DESTINATION include/kodi)
-IF(WIN32)
-  INSTALL(FILES src/windows/dlfcn-win32.h
-                src/windows/os-socket.h
-                src/windows/os-threads.h
-                src/windows/os-types.h
-          DESTINATION include/kodi/windows)
-ELSE(WIN32)
-  install(FILES src/posix/os-socket.h
-                src/posix/os-threads.h
-                src/posix/os-types.h
-          DESTINATION include/kodi/posix)
-ENDIF(WIN32)
-install(FILES src/sockets/serialport.h
-              src/sockets/socket.h
-              src/sockets/tcp.h
-        DESTINATION include/kodi/sockets)
-install(FILES src/threads/atomics.h
-              src/threads/mutex.h
-              src/threads/threads.h
-        DESTINATION include/kodi/threads)
-install(FILES src/util/atomic.h
-              src/util/baudrate.h
-              src/util/buffer.h
-              src/util/StringUtils.h
-              src/util/StdString.h
-              src/util/timeutils.h
-              src/util/util.h
-              src/util/XMLUtils.h
+install(FILES src/util/XMLUtils.h
         DESTINATION include/kodi/util)
 
 IF(NOT WIN32)

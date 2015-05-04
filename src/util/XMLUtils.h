@@ -21,7 +21,7 @@
  *
  */
 
-#include "StdString.h"
+#include <platform/util/StdString.h>
 #include "tinyxml.h"
 
 class XMLUtils
