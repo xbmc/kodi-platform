@@ -1,4 +1,4 @@
-kodiplatform (16.0.0-1~#DIST#) #DIST#; urgency=medium
+kodiplatform (16.0.0-#TAGREV#~#DIST#) #DIST#; urgency=medium
 
   * split up into libplatform and libkodiplatform, and removed libCEC-only code
 
