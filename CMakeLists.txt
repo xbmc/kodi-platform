@@ -22,9 +22,9 @@ if(NOT WIN32)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 endif()
 
-set(kodiplatform_INCLUDE_DIRS ${TINYXML_INCLUDE_DIR} "${CMAKE_INSTALL_PREFIX}/include/kodi")
+set(kodiplatform_INCLUDE_DIRS ${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR})
 IF(WIN32)
-  LIST(APPEND kodiplatform_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include/kodi/windows")
+  LIST(APPEND kodiplatform_INCLUDE_DIRS "${${KODI_INCLUDE_DIR}}/windows")
 ENDIF(WIN32)
 set(kodiplatform_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${TINYXML_LIBRARIES})
 
@@ -52,9 +52,9 @@ IF(NOT WIN32)
   include(PkgConfigHandler.cmake)
   configure_pc_file(kodiplatform kodiplatform.pc.in
                                  kodiplatform.pc
-                                 ${CMAKE_INSTALL_PREFIX}
-                                 ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
-                                 ${CMAKE_INSTALL_PREFIX}/include)
+                                 ${KODI_PREFIX}
+                                 ${KODI_LIB_DIR}
+                                 ${KODI_PREFIX}/include)
 
   install(FILES ${CMAKE_BINARY_DIR}/kodiplatform.pc
           DESTINATION ${CMAKE_INSTALL_LIBDIR_NOARCH}/pkgconfig)
