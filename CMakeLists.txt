@@ -25,7 +25,10 @@ endif()
 set(kodiplatform_INCLUDE_DIRS ${TINYXML_INCLUDE_DIR} "${CMAKE_INSTALL_PREFIX}/include/kodi")
 IF(WIN32)
   LIST(APPEND kodiplatform_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include/kodi/windows")
+  set(PLAT_SOURCES  src/windows/dlfcn-win32.cpp
+                    src/windows/os-threads.cpp)
 ENDIF(WIN32)
+
 set(kodiplatform_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${TINYXML_LIBRARIES})
 
 if(NOT ${CORE_SYSTEM_NAME} STREQUAL "")
