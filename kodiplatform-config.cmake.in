@@ -10,16 +10,16 @@
 #
 # propagate these properties from one build system to the other
 set (kodiplatform_VERSION "@kodiplatform_VERSION_MAJOR@.@kodiplatform_VERSION_MINOR@")
-set (kodiplatform_INCLUDE_DIRS @kodiplatform_INCLUDE_DIRS@ @CMAKE_INSTALL_PREFIX@/include)
+set (kodiplatform_INCLUDE_DIRS @TINYXML_INCLUDE_DIR@ ${CMAKE_FIND_ROOT_PATH}@kodiplatform_INCLUDE_DIRS@ ${CMAKE_FIND_ROOT_PATH}@CMAKE_INSTALL_PREFIX@/include)
 set (kodiplatform_LIBRARY_DIRS "@CMAKE_LIBRARY_OUTPUT_DIRECTORY@")
 set (kodiplatform_LINKER_FLAGS "@kodiplatform_LINKER_FLAGS@")
 set (kodiplatform_CONFIG_VARS "@kodiplatform_CONFIG_VARS@")
 
 # libraries come from the build tree where this file was generated
 if(WIN32)
-  set (kodiplatform_LIBRARY "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/kodiplatform.lib")
+  set (kodiplatform_LIBRARY "${CMAKE_FIND_ROOT_PATH}@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/kodiplatform.lib")
 else(WIN32)
-  set (kodiplatform_LIBRARY "-L@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@ -lkodiplatform")
+  set (kodiplatform_LIBRARY "-L${CMAKE_FIND_ROOT_PATH}@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@ -lkodiplatform")
 endif(WIN32)
 set (kodiplatform_LIBRARIES ${kodiplatform_LIBRARY} "@kodiplatform_LIBRARIES@")
 mark_as_advanced (kodiplatform_LIBRARY)
