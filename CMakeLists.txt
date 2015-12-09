@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 find_package(kodi REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(Threads REQUIRED)
-find_package(platform REQUIRED)
+find_package(p8-platform REQUIRED)
 include(UseMultiArch.cmake)
 include(CheckAtomic.cmake)
 
@@ -36,7 +36,7 @@ endif()
 
 set(SOURCES src/util/XMLUtils.cpp)
 
-include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR} ${platform_INCLUDE_DIRS})
+include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR} ${p8-platform_INCLUDE_DIRS})
 
 add_library(kodiplatform ${SOURCES} ${PLAT_SOURCES})
 target_link_libraries(kodiplatform ${kodiplatform_LIBRARIES} ${platform_LIBRARIES})
