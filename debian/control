@@ -1,7 +1,7 @@
 Source: kodiplatform
 Priority: extra
 Maintainer: Arne Morten Kvarving <arne.morten.kvarving@sintef.no>
-Build-Depends: debhelper (>= 8.0.0), cmake, libtinyxml-dev, kodi-addon-dev, libplatform-dev
+Build-Depends: debhelper (>= 8.0.0), cmake, libtinyxml-dev, kodi-addon-dev, libplatform-dev | libp8-platform-dev
 Standards-Version: 3.9.2
 Section: libs
 
