@@ -30,7 +30,7 @@ set(kodiplatform_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${TINYXML_LIBRARIES})
 
 if(NOT ${CORE_SYSTEM_NAME} STREQUAL "")
   if(${CORE_SYSTEM_NAME} STREQUAL "osx" OR ${CORE_SYSTEM_NAME} STREQUAL "ios")
-    list(APPEND kodiplatform_LIBRARIES "-framework CoreVideo -framework IOKit")
+    list(APPEND kodiplatform_LIBRARIES "-framework CoreVideo")
   endif()
 endif()
 
