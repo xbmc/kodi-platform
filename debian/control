@@ -2,23 +2,23 @@ Source: kodiplatform
 Priority: extra
 Maintainer: Arne Morten Kvarving <arne.morten.kvarving@sintef.no>
 Build-Depends: debhelper (>= 8.0.0), cmake, libtinyxml-dev, kodi-addon-dev, libp8-platform-dev
-Standards-Version: 3.9.2
+Standards-Version: 3.9.5
 Section: libs
 
 Package: libkodiplatform-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Depends: libkodiplatform16 (= ${binary:Version}), libtinyxml-dev, libplatform-dev
+Depends: libkodiplatform17 (= ${binary:Version}), libtinyxml-dev, libp8-platform-dev
 Provides: libkodiplatform-dev
 Description: Kodi platform support library -- development files
  Kodi platform support library
 
-Package: libkodiplatform16
+Package: libkodiplatform17
 Section: libs
 Architecture: any
 Multi-Arch: same
-Depends: ${shlibs:Depends}, ${misc:Depends}, libplatform1
+Depends: ${shlibs:Depends}, ${misc:Depends}, libp8-platform2
 Provides: libkodiplatform
 Description: Kodi platform support library
  Kodi platform support library

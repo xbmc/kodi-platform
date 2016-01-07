@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 find_package(kodi REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(Threads REQUIRED)
-find_package(p8-platform REQUIRED)
+find_package(platform REQUIRED)
 include(UseMultiArch.cmake)
 include(CheckAtomic.cmake)
 
@@ -30,16 +30,16 @@ set(kodiplatform_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${TINYXML_LIBRARIES})
 
 if(NOT ${CORE_SYSTEM_NAME} STREQUAL "")
   if(${CORE_SYSTEM_NAME} STREQUAL "osx" OR ${CORE_SYSTEM_NAME} STREQUAL "ios")
-    list(APPEND kodiplatform_LIBRARIES "-framework CoreVideo -framework IOKit")
+    list(APPEND kodiplatform_LIBRARIES "-framework CoreVideo")
   endif()
 endif()
 
 set(SOURCES src/util/XMLUtils.cpp)
 
-include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR} ${platform_INCLUDE_DIRS})
+include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR} ${p8-platform_INCLUDE_DIRS})
 
 add_library(kodiplatform ${SOURCES} ${PLAT_SOURCES})
-target_link_libraries(kodiplatform ${kodiplatform_LIBRARIES} ${platform_LIBRARIES})
+target_link_libraries(kodiplatform ${kodiplatform_LIBRARIES} ${p8-platform_LIBRARIES})
 set_target_properties(kodiplatform PROPERTIES VERSION ${kodiplatform_VERSION_MAJOR}.${kodiplatform_VERSION_MINOR}.${kodiplatform_VERSION_PATCH}
                                               SOVERSION ${kodiplatform_VERSION_MAJOR}.0)
 
