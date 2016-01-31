@@ -1,3 +1,9 @@
+kodiplatform (17.0.0-#TAGREV#~#DIST#) #DIST#; urgency=medium
+
+  * adjust to libplatform rename to libp8-platform
+
+ -- wsnipex <wsnipex@a1.net>  Thu, 12 Feb 2015 13:28:01 +0100
+
 kodiplatform (16.0.0-#TAGREV#~#DIST#) #DIST#; urgency=medium
 
   * split up into libplatform and libkodiplatform, and removed libCEC-only code
