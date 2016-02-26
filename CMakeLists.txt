@@ -41,7 +41,7 @@ include_directories(${TINYXML_INCLUDE_DIR} ${KODI_INCLUDE_DIR} ${platform_INCLUD
 add_library(kodiplatform ${SOURCES} ${PLAT_SOURCES})
 target_link_libraries(kodiplatform ${kodiplatform_LIBRARIES} ${platform_LIBRARIES})
 set_target_properties(kodiplatform PROPERTIES VERSION ${kodiplatform_VERSION_MAJOR}.${kodiplatform_VERSION_MINOR}.${kodiplatform_VERSION_PATCH}
-                                              SOVERSION ${kodiplatform_VERSION_MAJOR}.0)
+                                              SOVERSION ${kodiplatform_VERSION_MAJOR})
 
 install(TARGETS kodiplatform DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES src/util/XMLUtils.h
