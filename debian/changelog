@@ -1,3 +1,9 @@
+kodiplatform (17.1.0-1~trusty) trusty; urgency=medium
+
+  * rename find_package kodi to Kodi
+
+ -- h.udo <hudokkow@gmail.com>  Mon, 16 May 2016 10:44:56 +0000
+
 kodiplatform (17.0.0-1~trusty) trusty; urgency=medium
 
   * adjust to libplatform rename to libp8-platform
