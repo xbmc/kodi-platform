@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 find_package(Kodi REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(Threads REQUIRED)
-find_package(p8-platform REQUIRED)
+find_package(platform REQUIRED)
 include(UseMultiArch.cmake)
 include(CheckAtomic.cmake)
 
