@@ -21,13 +21,14 @@
  *
  */
 
-#include <p8-platform/util/StdString.h>
+#include <string>
+#include <vector>
 #include "tinyxml.h"
 
 class XMLUtils
 {
 public:
-  static bool HasUTF8Declaration(const CStdString &strXML);
+  static bool HasUTF8Declaration(const std::string &strXML);
   static bool HasChild(const TiXmlNode* pRootNode, const char* strTag);
 
   static bool GetHex(const TiXmlNode* pRootNode, const char* strTag, uint32_t& dwHexValue);
@@ -37,19 +38,19 @@ public:
   static bool GetDouble(const TiXmlNode* pRootNode, const char* strTag, double &value);
   static bool GetInt(const TiXmlNode* pRootNode, const char* strTag, int& iIntValue);
   static bool GetBoolean(const TiXmlNode* pRootNode, const char* strTag, bool& bBoolValue);
-  static bool GetString(const TiXmlNode* pRootNode, const char* strTag, CStdString& strStringValue);
-  static bool GetEncoding(const TiXmlDocument* pDoc, CStdString& strEncoding);
-  static bool GetPath(const TiXmlNode* pRootNode, const char* strTag, CStdString& strStringValue);
+  static bool GetString(const TiXmlNode* pRootNode, const char* strTag, std::string& strStringValue);
+  static bool GetEncoding(const TiXmlDocument* pDoc, std::string& strEncoding);
+  static bool GetPath(const TiXmlNode* pRootNode, const char* strTag, std::string& strStringValue);
   static bool GetFloat(const TiXmlNode* pRootNode, const char* strTag, float& value, const float min, const float max);
   static bool GetInt(const TiXmlNode* pRootNode, const char* strTag, int& iIntValue, const int min, const int max);
 
-  static void SetString(TiXmlNode* pRootNode, const char *strTag, const CStdString& strValue);
+  static void SetString(TiXmlNode* pRootNode, const char *strTag, const std::string& strValue);
   static void SetStringArray(TiXmlNode* pRootNode, const char *strTag, const std::vector<std::string>& arrayValue);
   static void SetInt(TiXmlNode* pRootNode, const char *strTag, int value);
   static void SetFloat(TiXmlNode* pRootNode, const char *strTag, float value);
   static void SetBoolean(TiXmlNode* pRootNode, const char *strTag, bool value);
   static void SetHex(TiXmlNode* pRootNode, const char *strTag, uint32_t value);
-  static void SetPath(TiXmlNode* pRootNode, const char *strTag, const CStdString& strValue);
+  static void SetPath(TiXmlNode* pRootNode, const char *strTag, const std::string& strValue);
   static void SetLong(TiXmlNode* pRootNode, const char *strTag, long iValue);
 
   static const int path_version = 1;
